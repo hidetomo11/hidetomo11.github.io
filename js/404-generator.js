@@ -11,16 +11,6 @@ const animations = {
       from { transform: translateY(-20px); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
     }
-  `,
-  glitch: `
-    @keyframes glitch {
-      0% { transform: translate(0); }
-      20% { transform: translate(-2px, 2px); }
-      40% { transform: translate(-2px, -2px); }
-      60% { transform: translate(2px, 2px); }
-      80% { transform: translate(2px, -2px); }
-      100% { transform: translate(0); }
-    }
   `
 };
 
@@ -70,7 +60,6 @@ const layouts = {
         text-align: right;
         border-right: 2px solid BORDER_COLOR;
         padding-right: 2rem;
-        animation: glitch 3s infinite;
         @media (max-width: 768px) {
           text-align: center;
           border-right: none;
@@ -110,7 +99,6 @@ const layouts = {
         font-size: FONT_SIZE;
         transform: rotate(-15deg);
         grid-area: center;
-        animation: glitch 3s infinite;
         @media (max-width: 768px) {
           transform: rotate(-5deg);
           font-size: calc(FONT_SIZE * 0.7);
@@ -143,7 +131,6 @@ const layouts = {
         font-size: FONT_SIZE;
         grid-column: 1 / -1;
         text-align: center;
-        animation: glitch 3s infinite;
         @media (max-width: 768px) {
           font-size: calc(FONT_SIZE * 0.7);
         }
