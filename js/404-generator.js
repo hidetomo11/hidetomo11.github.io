@@ -1,20 +1,4 @@
-// アニメーションの定義
-const animations = {
-  fadeIn: `
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-  `,
-  slideIn: `
-    @keyframes slideIn {
-      from { transform: translateY(-20px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-  `
-};
-
-// レイアウトパターンの定義を更新
+// レイアウトパターンの定義
 const layouts = {
   patterns: [
     // パターン1: センター配置（デフォルト）
@@ -24,7 +8,6 @@ const layouts = {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        animation: fadeIn 0.8s ease-out;
         @media (max-width: 768px) {
           padding: 1rem;
         }
@@ -32,14 +15,12 @@ const layouts = {
       errorCode: `
         font-size: FONT_SIZE;
         text-align: center;
-        animation: slideIn 1s ease-out;
         @media (max-width: 768px) {
           font-size: calc(FONT_SIZE * 0.7);
         }
       `,
       message: `
         text-align: center;
-        animation: fadeIn 1.2s ease-out;
       `
     },
     // パターン2: 左右分割（モバイル対応）
@@ -49,7 +30,6 @@ const layouts = {
         grid-template-columns: 1fr 1fr;
         gap: 2rem;
         align-items: center;
-        animation: fadeIn 0.8s ease-out;
         @media (max-width: 768px) {
           grid-template-columns: 1fr;
           gap: 1rem;
@@ -71,7 +51,6 @@ const layouts = {
       message: `
         text-align: left;
         padding-left: 2rem;
-        animation: slideIn 1s ease-out;
         @media (max-width: 768px) {
           text-align: center;
           padding: 1rem 0;
@@ -87,7 +66,6 @@ const layouts = {
           ". center center ."
           "bottom-left . . bottom-right";
         gap: 1rem;
-        animation: fadeIn 0.8s ease-out;
         @media (max-width: 768px) {
           grid-template-areas: 
             "center"
@@ -107,7 +85,6 @@ const layouts = {
       message: `
         transform: rotate(15deg);
         grid-area: bottom-right;
-        animation: slideIn 1s ease-out;
         @media (max-width: 768px) {
           transform: rotate(5deg);
         }
@@ -120,7 +97,6 @@ const layouts = {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 1.5rem;
         padding: 2rem;
-        animation: fadeIn 0.8s ease-out;
         @media (max-width: 768px) {
           grid-template-columns: 1fr;
           padding: 1rem;
@@ -138,13 +114,12 @@ const layouts = {
       message: `
         grid-column: 1 / -1;
         text-align: center;
-        animation: slideIn 1s ease-out;
       `
     }
   ]
 };
 
-// generateStyleVariations 関数を更新
+// generateStyleVariations 関数
 const generateStyleVariations = async () => {
   try {
     const templateHTML = await fs.readFile('404.html', 'utf8');
@@ -153,12 +128,7 @@ const generateStyleVariations = async () => {
       const selectedLayout = randomPick(layouts.patterns);
       const borderColor = randomPick(colors.text);
       
-      // アニメーションのスタイルを追加
-      const animationStyles = Object.values(animations).join('\n');
-      
       const styles = `
-        ${animationStyles}
-        
         body {
           font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
           line-height: 1.5;
@@ -196,13 +166,6 @@ const generateStyleVariations = async () => {
           color: ${randomPick(colors.text)};
           margin-bottom: ${randomPick(spacing.messageMargin)};
           font-weight: 400;
-        }
-        
-        @media (prefers-reduced-motion: reduce) {
-          * {
-            animation: none !important;
-            transition: none !important;
-          }
         }
       `;
       
