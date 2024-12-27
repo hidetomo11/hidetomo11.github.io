@@ -7,18 +7,7 @@ const __dirname = dirname(__filename);
 
 // カラーパレットの定義
 const colors = {
-  background: [
-    '#F6F8FA', // オリジナルの薄いグレー
-    '#E8F0FE', // 薄い青
-    '#F0FFF4', // 薄い緑
-    '#FFF5F5', // 薄い赤
-    '#FAF5FF', // 薄い紫
-    '#FFFAF0', // 薄いオレンジ
-    '#F0F4F8', // 別の薄い青
-    '#F7FAFC', // さらに別の薄いグレー
-    '#F9FAFB', // より明るい灰色
-    '#F5F3FF'  // 別の薄い紫
-  ],
+  background: ['#F6F8FA', '#F0F2F4', '#F8FAFC', '#F4F6F8', '#F2F4F6'],
   text: ['#1F2328', '#24292F', '#2D333B', '#1C2024', '#22272E'],
   link: ['#0969DA', '#0366D6', '#1567D8', '#0757C3', '#0B5DD7'],
   footer: ['#57606A', '#5A6572', '#535B64', '#4E565F', '#596068']
@@ -100,60 +89,6 @@ const generateStyleVariations = async () => {
         .github-logo {
           margin-top: ${18 + Math.floor(Math.random() * 4)}px;
           opacity: ${0.25 + Math.random() * 0.1};
-        }
-        .glitch-text {
-          display: inline-block;
-          position: relative;
-        }
-        @keyframes textGlitch {
-          0% {
-            opacity: 1;
-          }
-          0.1% {
-            opacity: 0;
-            transform: translate(-0.5px, 0.2px);
-          }
-          0.2% {
-            opacity: 1;
-            transform: translate(0);
-          }
-          15% {
-            opacity: 1;
-          }
-          15.1% {
-            opacity: 0.3;
-            transform: translate(0.3px, -0.1px);
-          }
-          15.2% {
-            opacity: 1;
-            transform: translate(0);
-          }
-          89% {
-            opacity: 1;
-          }
-          89.1% {
-            opacity: 0.4;
-            transform: translate(-0.2px, 0.1px);
-          }
-          89.2% {
-            opacity: 1;
-            transform: translate(0);
-          }
-          100% {
-            opacity: 1;
-          }
-        }
-        .glitch-text {
-          animation: textGlitch 8s infinite;
-        }
-        .glitch-text:nth-child(2n) {
-          animation-delay: 0.3s;
-        }
-        .glitch-text:nth-child(3n) {
-          animation-delay: 0.7s;
-        }
-        .glitch-text:nth-child(4n) {
-          animation-delay: 1.1s;
         }
       `;
 
